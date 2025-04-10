@@ -178,7 +178,7 @@ function clientGOM:sendExtraRenderData(uniqueID)
             warningColor = 0.5
         end
     end
-    clientGOM:setExtraRenderData(uniqueID,vec3(brightness,warningColor,0.0)) --reduced from vec4 in 0.5.2, as the engine now uses the w value to provide the position relative to sea level in meters
+    clientGOM:setExtraRenderData(uniqueID,vec3(brightness,warningColor,0.0)) --reduced from vec4 in 0.6, as the engine now uses the w value to provide the position relative to sea level in meters
 end
     
 function clientGOM:setObjectSelectionHighlightBrightness(uniqueID, brightness)

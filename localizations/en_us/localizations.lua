@@ -29,20 +29,20 @@ localizations.values = {
     mob_chicken_plural = "Chickens",
     mob_mammoth = "Mammoth",
     mob_mammoth_plural = "Mammoths",
-    mob_catfish = "Catfish", --0.5.2
-    mob_catfish_plural = "Catfish", --0.5.2
-    mob_coelacanth = "Coelacanth", --0.5.2
-    mob_coelacanth_plural = "Coelacanth", --0.5.2
-    mob_flagellipinna = "Flagellipinna", --0.5.2
-    mob_flagellipinna_plural = "Flagellipinna", --0.5.2
-    mob_polypterus = "Polypterus", --0.5.2
-    mob_polypterus_plural = "Polypterus", --0.5.2
-    mob_redfish = "Redfish", --0.5.2
-    mob_redfish_plural = "Redfish", --0.5.2
-    mob_tropicalfish = "Jackfish", --0.5.2
-    mob_tropicalfish_plural = "Jackfish", --0.5.2
-    mob_swordfish = "Swordfish", --0.5.2
-    mob_swordfish_plural = "Swordfish", --0.5.2
+    mob_catfish = "Catfish", --0.6
+    mob_catfish_plural = "Catfish", --0.6
+    mob_coelacanth = "Coelacanth", --0.6
+    mob_coelacanth_plural = "Coelacanth", --0.6
+    mob_flagellipinna = "Flagellipinna", --0.6
+    mob_flagellipinna_plural = "Flagellipinna", --0.6
+    mob_polypterus = "Polypterus", --0.6
+    mob_polypterus_plural = "Polypterus", --0.6
+    mob_redfish = "Redfish", --0.6
+    mob_redfish_plural = "Redfish", --0.6
+    mob_tropicalfish = "Jackfish", --0.6
+    mob_tropicalfish_plural = "Jackfish", --0.6
+    mob_swordfish = "Swordfish", --0.6
+    mob_swordfish_plural = "Swordfish", --0.6
 
     -- buildables
     buildable_craftArea = "Crafting Area",
@@ -1332,36 +1332,36 @@ localizations.values = {
     object_alpacaMeatRack_plural = "Raw Alpaca Meat", --0.3.0 added "Raw"
     object_alpacaMeatRackCooked = "Cooked Alpaca Meat",
     object_alpacaMeatRackCooked_plural = "Cooked Alpaca Meat",
-    object_catfishDead = "Raw Catfish", --0.5.2
-    object_catfishDead_plural = "Raw Catfish", --0.5.2
-    object_catfishCooked = "Cooked Catfish", --0.5.2
-    object_catfishCooked_plural = "Cooked Catfish", --0.5.2
-    object_coelacanthDead = "Raw Coelacanth", --0.5.2
-    object_coelacanthDead_plural = "Raw Coelacanth", --0.5.2
-    object_coelacanthCooked = "Cooked Coelacanth", --0.5.2
-    object_coelacanthCooked_plural = "Cooked Coelacanth", --0.5.2
-    object_flagellipinnaDead = "Raw Flagellipinna", --0.5.2
-    object_flagellipinnaDead_plural = "Raw Flagellipinna", --0.5.2
-    object_flagellipinnaCooked = "Cooked Flagellipinna", --0.5.2
-    object_flagellipinnaCooked_plural = "Cooked Flagellipinna", --0.5.2
-    object_polypterusDead = "Raw Polypterus", --0.5.2
-    object_polypterusDead_plural = "Raw Polypterus", --0.5.2
-    object_polypterusCooked = "Cooked Polypterus", --0.5.2
-    object_polypterusCooked_plural = "Cooked Polypterus", --0.5.2
-    object_redfishDead = "Raw Redfish", --0.5.2
-    object_redfishDead_plural = "Raw Redfish", --0.5.2
-    object_redfishCooked = "Cooked Redfish", --0.5.2
-    object_redfishCooked_plural = "Cooked Redfish", --0.5.2
-    object_tropicalfishDead = "Raw Jackfish", --0.5.2
-    object_tropicalfishDead_plural = "Raw Jackfish", --0.5.2
-    object_tropicalfishCooked = "Cooked Jackfish", --0.5.2
-    object_tropicalfishCooked_plural = "Cooked Jackfish", --0.5.2
-    object_swordfishDead = "Swordfish", --0.5.2
-    object_swordfishDead_plural = "Swordfish", --0.5.2
-    object_fishFillet = "Raw Fish Fillet", --0.5.2
-    object_fishFillet_plural = "Raw Fish Fillets", --0.5.2
-    object_fishFilletCooked = "Cooked Fish Fillet", --0.5.2
-    object_fishFilletCooked_plural = "Cooked Fish Fillets", --0.5.2
+    object_catfishDead = "Raw Catfish", --0.6
+    object_catfishDead_plural = "Raw Catfish", --0.6
+    object_catfishCooked = "Cooked Catfish", --0.6
+    object_catfishCooked_plural = "Cooked Catfish", --0.6
+    object_coelacanthDead = "Raw Coelacanth", --0.6
+    object_coelacanthDead_plural = "Raw Coelacanth", --0.6
+    object_coelacanthCooked = "Cooked Coelacanth", --0.6
+    object_coelacanthCooked_plural = "Cooked Coelacanth", --0.6
+    object_flagellipinnaDead = "Raw Flagellipinna", --0.6
+    object_flagellipinnaDead_plural = "Raw Flagellipinna", --0.6
+    object_flagellipinnaCooked = "Cooked Flagellipinna", --0.6
+    object_flagellipinnaCooked_plural = "Cooked Flagellipinna", --0.6
+    object_polypterusDead = "Raw Polypterus", --0.6
+    object_polypterusDead_plural = "Raw Polypterus", --0.6
+    object_polypterusCooked = "Cooked Polypterus", --0.6
+    object_polypterusCooked_plural = "Cooked Polypterus", --0.6
+    object_redfishDead = "Raw Redfish", --0.6
+    object_redfishDead_plural = "Raw Redfish", --0.6
+    object_redfishCooked = "Cooked Redfish", --0.6
+    object_redfishCooked_plural = "Cooked Redfish", --0.6
+    object_tropicalfishDead = "Raw Jackfish", --0.6
+    object_tropicalfishDead_plural = "Raw Jackfish", --0.6
+    object_tropicalfishCooked = "Cooked Jackfish", --0.6
+    object_tropicalfishCooked_plural = "Cooked Jackfish", --0.6
+    object_swordfishDead = "Swordfish", --0.6
+    object_swordfishDead_plural = "Swordfish", --0.6
+    object_fishFillet = "Raw Fish Fillet", --0.6
+    object_fishFillet_plural = "Raw Fish Fillets", --0.6
+    object_fishFilletCooked = "Cooked Fish Fillet", --0.6
+    object_fishFilletCooked_plural = "Cooked Fish Fillets", --0.6
     object_dirtWallDoor = "Dirt Wall With Door",
     object_dirtWallDoor_plural = "Dirt Wall With Door",
     object_build_storageArea = "Storage Area",
@@ -1506,16 +1506,16 @@ localizations.values = {
     object_dirtWall_plural = "Dirt Walls",
     object_alpacaWoolskin = "Alpaca Woolskin",
     object_alpacaWoolskin_plural = "Alpaca Woolskins",
-    object_alpacaWoolskin_white = "Alpaca Woolskin (White)", --0.5.2
-    object_alpacaWoolskin_white_plural = "Alpaca Woolskins (White)", --0.5.2
-    object_alpacaWoolskin_black = "Alpaca Woolskin (Black)", --0.5.2
-    object_alpacaWoolskin_black_plural = "Alpaca Woolskins (Black)", --0.5.2
-    object_alpacaWoolskin_red = "Alpaca Woolskin (Red)", --0.5.2
-    object_alpacaWoolskin_red_plural = "Alpaca Woolskins (Red)", --0.5.2
-    object_alpacaWoolskin_yellow = "Alpaca Woolskin (Yellow)", --0.5.2
-    object_alpacaWoolskin_yellow_plural = "Alpaca Woolskins (Yellow)", --0.5.2
-    object_alpacaWoolskin_cream = "Alpaca Woolskin (Cream)", --0.5.2
-    object_alpacaWoolskin_cream_plural = "Alpaca Woolskins (Cream)", --0.5.2
+    object_alpacaWoolskin_white = "Alpaca Woolskin (White)", --0.6
+    object_alpacaWoolskin_white_plural = "Alpaca Woolskins (White)", --0.6
+    object_alpacaWoolskin_black = "Alpaca Woolskin (Black)", --0.6
+    object_alpacaWoolskin_black_plural = "Alpaca Woolskins (Black)", --0.6
+    object_alpacaWoolskin_red = "Alpaca Woolskin (Red)", --0.6
+    object_alpacaWoolskin_red_plural = "Alpaca Woolskins (Red)", --0.6
+    object_alpacaWoolskin_yellow = "Alpaca Woolskin (Yellow)", --0.6
+    object_alpacaWoolskin_yellow_plural = "Alpaca Woolskins (Yellow)", --0.6
+    object_alpacaWoolskin_cream = "Alpaca Woolskin (Cream)", --0.6
+    object_alpacaWoolskin_cream_plural = "Alpaca Woolskins (Cream)", --0.6
     object_mammothWoolskin = "Mammoth Woolskin",
     object_mammothWoolskin_plural = "Mammoth Woolskins",
     object_bone = "Bone",
@@ -2280,18 +2280,18 @@ localizations.values = {
     object_catfish_plural = "Catfish",
 
     
-    object_coelacanth = "Coelacanth", --0.5.2
-    object_coelacanth_plural = "Coelacanth", --0.5.2
-    object_flagellipinna = "Flagellipinna", --0.5.2
-    object_flagellipinna_plural = "Flagellipinna", --0.5.2
-    object_polypterus = "Polypterus", --0.5.2
-    object_polypterus_plural = "Polypterus", --0.5.2
-    object_redfish = "Redfish", --0.5.2
-    object_redfish_plural = "Redfish", --0.5.2
-    object_tropicalfish = "Jackfish", --0.5.2
-    object_tropicalfish_plural = "Jackfish", --0.5.2
-    object_swordfish = "Swordfish", --0.5.2
-    object_swordfish_plural = "Swordfish", --0.5.2
+    object_coelacanth = "Coelacanth", --0.6
+    object_coelacanth_plural = "Coelacanth", --0.6
+    object_flagellipinna = "Flagellipinna", --0.6
+    object_flagellipinna_plural = "Flagellipinna", --0.6
+    object_polypterus = "Polypterus", --0.6
+    object_polypterus_plural = "Polypterus", --0.6
+    object_redfish = "Redfish", --0.6
+    object_redfish_plural = "Redfish", --0.6
+    object_tropicalfish = "Jackfish", --0.6
+    object_tropicalfish_plural = "Jackfish", --0.6
+    object_swordfish = "Swordfish", --0.6
+    object_swordfish_plural = "Swordfish", --0.6
 
     --order
     order_idle = "Idle",
@@ -2640,8 +2640,8 @@ localizations.values = {
     resource_mammothMeatCooked_plural = "Cooked Mammoth Meat",
 
     
-    resource_swordfishDead = "Swordfish", --0.5.2
-    resource_swordfishDead_plural = "Swordfish", --0.5.2
+    resource_swordfishDead = "Swordfish", --0.6
+    resource_swordfishDead_plural = "Swordfish", --0.6
 
     --resource group
     resource_group_seed = "Seed",
@@ -2970,6 +2970,8 @@ localizations.values = {
     settings_Audio_SoundVolume = "Sound Volume",
     settings_Other = "Other",
     settings_allowLanConnections = "Allow Multiplayer LAN Connections",
+    settings_chatNotifications = "Chat Notifications", --0.6
+    settings_chatNotifications_messagesOnly = "Messages Only", --0.6 title in pull down menu to only show notifications for chat messages, not joins/disconnects
     settings_pauseOnLostFocus = "Pause when app loses focus", --b19
     settings_pauseOnInactivity = "Pause after inactivity", --0.4
     settings_enableTutorialForThisWorld = "Tutorial", --0.5 modified, removed "Enable tutorial for this world", as it has its own section for world settings now
@@ -3047,7 +3049,7 @@ localizations.values = {
     ui_resources_eating = "Eating",
     ui_resources_tool = "Tool or Weapon", --b13
     ui_resources_medicine = "Medicine", --0.3.0
-    ui_resources_clothing = "Clothing", --0.5.2
+    ui_resources_clothing = "Clothing", --0.6
 
     -- look at ui
     lookatUI_needs = "Needs",
@@ -3471,6 +3473,7 @@ localizations.values = {
     end,
     
     misc_disabled = "Disabled", --0.4
+    misc_enabled = "Enabled", --0.6 used in settings menu -> chat notifications pop up menu
     misc_maxQuantity = "Max Quantity", --0.4
     misc_max = "Max", --0.4
 
@@ -3706,8 +3709,8 @@ localizations.values = {
     storage_stoneBlock = "Stone Blocks", --0.4
 
     
-    storage_swordfishDead = "Swordfish", --0.5.2
-    storage_swordfishDead_plural = "Swordfish", --0.5.2
+    storage_swordfishDead = "Swordfish", --0.6
+    storage_swordfishDead_plural = "Swordfish", --0.6
 
     -- constructable_classification
     constructable_classification_build = "Buildings",
@@ -3910,23 +3913,23 @@ localizations.values = {
     selectionGroup_canoe_plural = "Canoes", --0.5.1
     selectionGroup_canoe_descriptive = "Any Canoes", --0.5.1
 
-    selectionGroup_chicken = "Any Chickens", --0.5.2, when using multi select, this is in the pull down menu, allowing you to select between any chickens or only red chickens
-    selectionGroup_alpaca = "Any Alpacas", --0.5.2
-    selectionGroup_mammoth = "Any Mammoths", --0.5.2
-    selectionGroup_catfish = "Any Catfish", --0.5.2
-    selectionGroup_coelacanth = "Any Coelacanth", --0.5.2
-    selectionGroup_flagellipinna = "Any Flagellipinna", --0.5.2
-    selectionGroup_polypterus = "Any Polypterus", --0.5.2
-    selectionGroup_redfish = "Any Redfish", --0.5.2
-    selectionGroup_tropicalfish = "Any Jackfish", --0.5.2
-    selectionGroup_swordfish = "Any Swordfish", --0.5.2
+    selectionGroup_chicken = "Any Chickens", --0.6, when using multi select, this is in the pull down menu, allowing you to select between any chickens or only red chickens
+    selectionGroup_alpaca = "Any Alpacas", --0.6
+    selectionGroup_mammoth = "Any Mammoths", --0.6
+    selectionGroup_catfish = "Any Catfish", --0.6
+    selectionGroup_coelacanth = "Any Coelacanth", --0.6
+    selectionGroup_flagellipinna = "Any Flagellipinna", --0.6
+    selectionGroup_polypterus = "Any Polypterus", --0.6
+    selectionGroup_redfish = "Any Redfish", --0.6
+    selectionGroup_tropicalfish = "Any Jackfish", --0.6
+    selectionGroup_swordfish = "Any Swordfish", --0.6
     
 
-    selectionGroup_alpaca_white = "White Alpacas", --0.5.2
-    selectionGroup_alpaca_black = "Black Alpacas", --0.5.2
-    selectionGroup_alpaca_red = "Red Alpacas", --0.5.2
-    selectionGroup_alpaca_yellow = "Yellow Alpacas", --0.5.2
-    selectionGroup_alpaca_cream = "Cream Alpacas", --0.5.2
+    selectionGroup_alpaca_white = "White Alpacas", --0.6
+    selectionGroup_alpaca_black = "Black Alpacas", --0.6
+    selectionGroup_alpaca_red = "Red Alpacas", --0.6
+    selectionGroup_alpaca_yellow = "Yellow Alpacas", --0.6
+    selectionGroup_alpaca_cream = "Cream Alpacas", --0.6
     
     -- notifications
     notification_becamePregnant = function(values)

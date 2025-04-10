@@ -221,6 +221,8 @@ material.types = mj:indexed {
 	
 	mat("leafyBushMid", vec3(0.25,0.33,0.2) * 0.8, bushRoughness * 0.9),
 	mat("leafyBushMidSpring", vec3(0.35,0.43,0.2), bushRoughness * 0.9),
+	mat("leafyBushMidSmall", vec3(0.25,0.33,0.2) * 0.8, bushRoughness * 0.9),
+	mat("leafyBushMidSmallSpring", vec3(0.35,0.43,0.2), bushRoughness * 0.9),
 	mat("bushMid", vec3(0.25,0.33,0.2) * 0.8, bushRoughness * 0.9),
 	mat("bushMidSpring", vec3(0.35,0.43,0.2), bushRoughness * 0.9),
 	mat("leafyBushSmall", vec3(0.25,0.33,0.2) * 0.8, bushRoughness * 0.9),
@@ -293,9 +295,9 @@ material.types = mj:indexed {
 	mat("ui_bronze_lightest_moderatePositive",		mjm.mix(uiBronzeColor, getMoodColor(moodColors.moderatePositive) , 0.99) * 1.0, 	0.3, 1.0),
 	mat("ui_bronze_lightest_severePositive",		mjm.mix(uiBronzeColor, getMoodColor(moodColors.severePositive)	 , 0.99) * 1.0, 	0.3, 1.0),
 
-	mat("terracotta", vec3(0.45,0.28,0.22), 0.4),
-	mat("terracottaDarkish", vec3(0.45,0.28,0.22) * 0.8, 0.4),
-	mat("terracottaDark", vec3(0.45,0.24,0.22) * 0.6, 0.1),
+	mat("terracotta", vec3(0.45,0.28,0.22), 1.0),
+	mat("terracottaDarkish", vec3(0.45,0.28,0.22) * 0.4 + vec3(0.1,0.0,0.0), 0.4),
+	mat("terracottaDark", vec3(0.45,0.24,0.22) * 0.2 + vec3(0.1,0.0,0.0), 0.1),
 	mat("hay", vec3(0.35,0.31,0.28) * 1.2, 1.0),
 	mat("thatch", thatchBaseColor, 1.0),
 	mat("thatchDecal", thatchBaseColor * 1.2, 1.0),
@@ -1092,7 +1094,7 @@ setMaterialB("bread", material.types.darkBread.color, 1.0)
 setMaterialB("rottenBread", material.types.darkRottenBread.color, 1.0)
 setMaterialB("breadDoughRotten", material.types.darkRottenBread.color, 1.0)
 
-setMaterialB("terracotta", material.types.terracottaDark.color, 0.8)
+setMaterialB("terracotta", material.types.terracottaDark.color, 0.2)
 setMaterialB("terracottaDarkish", material.types.terracottaDark.color * 0.8, 0.2)
 setMaterialB("terracottaDark", material.types.terracottaDark.color * 0.3, 0.2)
 
@@ -1321,6 +1323,9 @@ material.types.bananaBark.edgeDecal = edgeDecal.groupTypes.bananaBark
 
 material.types.leafyBushMid.edgeDecal = leavesADecal
 material.types.leafyBushMidSpring.edgeDecal = leavesADecal
+
+material.types.leafyBushMidSmall.edgeDecal = leavesSmallerDecal
+material.types.leafyBushMidSmallSpring.edgeDecal = leavesSmallerDecal
 
 material.types.leafyBushSmall.edgeDecal = leavesSmallerDecal
 material.types.leafyBushSmallSpring.edgeDecal = leavesSmallerDecal

@@ -7,6 +7,8 @@ local vec4 = mjm.vec4
 local topOffset = 0.0002
 local bottomOffset = 0.0002
 
+local nudgeToAvoidBleed = 1.0/512.0
+
 local quarter = 0.25
 local eighth = 0.125
 local sixteenth = 1.0/16.0
@@ -241,14 +243,14 @@ edgeDecal.textureLocations = { -- left, bottom, right, top
     ),
     
     flaxA = vec4(
-        quarter * 3.0, 
+        quarter * 3.0 + nudgeToAvoidBleed, 
         0.5, 
         1.0,
         0.5 + sixteenth
     ),
 
     flaxB = vec4(
-        quarter * 3.0, 
+        quarter * 3.0 + nudgeToAvoidBleed, 
         0.5 - sixteenth, 
         1.0,
         0.5 + sixteenth

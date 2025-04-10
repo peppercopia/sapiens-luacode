@@ -158,7 +158,7 @@ local function update()
 
         local gameObjectType = gameObject.types[constructableType.iconGameObjectType]
 
-        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResources(constructableType, nil)
+        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResourcesIncludingVariations(constructableType, nil)
         local hasSeenRequiredTools = constructableUIHelper:checkHasSeenRequiredTools(constructableType, nil)
         local discoveryComplete = constructableUIHelper:checkHasRequiredDiscoveries(constructableType)
 

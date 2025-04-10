@@ -15,7 +15,6 @@ local serverTerrain = nil
 local serverMob = nil
 local serverGOM = nil
 
-local sampleCount = 8
 local defaultTravelPastDistance = mj:mToP(120.0)
 
 --local minSapienProximityDistance = mj:mToP(100.0) --should be less than sampleDistance
@@ -32,7 +31,7 @@ local function doSample(mobType, samplePoint, nearSapiens) -- checkForTerrainMod
     local found = false
 
     local terrainResult = serverTerrain:getRawTerrainDataAtNormalizedPoint(samplePoint)
-    mj:log("terrainResult:", mj:pToM(terrainResult.x))
+   -- mj:log("terrainResult:", mj:pToM(terrainResult.x))
 
     local validAltitude = false
     if mobType.swims then
@@ -48,7 +47,7 @@ local function doSample(mobType, samplePoint, nearSapiens) -- checkForTerrainMod
         for i,sapien in ipairs(nearSapiens) do
             local distance2 = length2(sapien.normalizedPos - samplePoint)
             if distance2 < minSapienProximityDistance2 then
-                mj:log("mob load minSapienProximityDistance fail")
+                --mj:log("mob load minSapienProximityDistance fail")
                 allFarAway = false
                 break
             end
@@ -57,7 +56,7 @@ local function doSample(mobType, samplePoint, nearSapiens) -- checkForTerrainMod
         found = allFarAway
 
     else
-        mj:log("mob load notPassable terrain found:", mobType.key)
+        --mj:log("mob load notPassable terrain found:", mobType.key)
         return {
             notPassable = true
         }
@@ -132,7 +131,7 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
         return false
     end
 
-    for sampleIndex=1,sampleCount do --next is called below to get a new sapien
+    for sampleIndex=1,4 do --next is called below to get a new sapien
         local sapienNormalizedPos = sapien.normalizedPos
 
         local allNearSapiens = {}
@@ -161,7 +160,7 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
         local startPosNormal = nil
         local exitPosNormal = nil
 
-        mj:log("spawn attempt:", sampleIndex, " type:", mobType.key)
+        --mj:log("spawn attempt:", sampleIndex, " type:", mobType.key)
         local awayVec = getRandomPerpVecNormal(sapienNormalizedPos) -- note this is a normalized direction only
         perpVec = normalize(cross(sapienNormalizedPos, awayVec))
         if rng:randomBool() then
@@ -173,14 +172,28 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
         local sampleResult = doSample(mobType, goalMidPoint, allNearSapiens)
 
         if not sampleResult.success then
-            mj:log("initial goalMidPoint fail")
-            travelPastDistanceToUse = travelPastDistanceToUse * 0.5
+            --mj:log("initial goalMidPoint fail")
+            travelPastDistanceToUse = travelPastDistanceToUse * 2.0
+            goalMidPoint = normalize(sapienNormalizedPos + awayVec * travelPastDistanceToUse)
+            sampleResult = doSample(mobType, goalMidPoint, allNearSapiens)
+        end
+
+        if not sampleResult.success then
+            --mj:log("*2 goalMidPoint fail")
+            travelPastDistanceToUse = travelPastDistanceToUse * 4.0
+            goalMidPoint = normalize(sapienNormalizedPos + awayVec * travelPastDistanceToUse)
+            sampleResult = doSample(mobType, goalMidPoint, allNearSapiens)
+        end
+
+        if not sampleResult.success then
+            --mj:log("*4 goalMidPoint fail")
+            travelPastDistanceToUse = travelPastDistanceToUse * 8.0
             goalMidPoint = normalize(sapienNormalizedPos + awayVec * travelPastDistanceToUse)
             sampleResult = doSample(mobType, goalMidPoint, allNearSapiens)
         end
 
         if sampleResult.success then
-            mj:log("mid point found")
+            --mj:log("mid point found")
             
             startPosNormal = normalize(goalMidPoint - perpVec * spawnDistance + rng:randomVec() * spawnDistance * 0.75)
             startSampleResult = doSample(mobType, startPosNormal, allNearSapiens)
@@ -201,11 +214,11 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
                 local biomeTags = nil
 
                 if mobType.requiredBiomeTags or mobType.disallowedBiomeTags then
-                    mj:log("mobType.requiredBiomeTags or mobType.disallowedBiomeTags")
+                    --mj:log("mobType.requiredBiomeTags or mobType.disallowedBiomeTags")
                     if not biomeTags then
                         biomeTags = serverTerrain:getBiomeTagsForNormalizedPoint(startPosNormal)
                     end
-                    mj:log("biomeTags:", biomeTags)
+                    --mj:log("biomeTags:", biomeTags)
 
                     if mobType.requiredBiomeTags then
                         local found = false
@@ -216,7 +229,7 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
                             end
                         end
                         if not found then
-                            mj:log("not valid due to mobType missing one of the required tags:", mobType.requiredBiomeTags)
+                            --mj:log("not valid due to mobType missing one of the required tags:", mobType.requiredBiomeTags)
                             return false
                         end
                     end
@@ -225,7 +238,7 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
                     if mobType.disallowedBiomeTags then
                         for i,tag in ipairs(mobType.disallowedBiomeTags) do
                             if biomeTags[tag] then
-                                mj:log("not valid due to mobType containing disallowed tag:", tag)
+                                --mj:log("not valid due to mobType containing disallowed tag:", tag)
                                 return false
                             end
                         end
@@ -234,7 +247,7 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
 
                 local mobGameObjectTypeIndex = mobType.gameObjectTypeIndex
                 if mobType.variants then
-                    mj:log("variants found")
+                    --mj:log("variants found")
                     local variantCount = #mobType.variants
                     local randomIndexOffset = rng:randomInteger(variantCount)
                     for i=1,variantCount do
@@ -245,13 +258,13 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
                         
                         local variant = mobType.variants[index]
                         local valid = true
-                        mj:log("test variant:", variant)
+                        --mj:log("test variant:", variant)
 
                         if variant.requiredBiomeTags or variant.disallowedBiomeTags then
                             if not biomeTags then
                                 biomeTags = serverTerrain:getBiomeTagsForNormalizedPoint(startPosNormal)
                             end
-                            mj:log("biomeTags:", biomeTags)
+                            --mj:log("biomeTags:", biomeTags)
                             
                            --[[ if variant.requiredBiomeTags then
                                 for j,tag in pairs(variant.requiredBiomeTags) do
@@ -272,7 +285,7 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
                                     end
                                 end
                                 if not found then
-                                    mj:log("not valid due to variant missing one of the required tags:", mobType.requiredBiomeTags)
+                                    --mj:log("not valid due to variant missing one of the required tags:", variant.requiredBiomeTags)
                                     valid = false
                                 end
                             end
@@ -280,7 +293,7 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
                             if valid and variant.disallowedBiomeTags then
                                 for j,tag in pairs(variant.disallowedBiomeTags) do
                                     if biomeTags[tag] then
-                                        mj:log("not valid due to variant containing disallowed tag:", tag)
+                                        --mj:log("not valid due to variant containing disallowed tag:", tag)
                                         valid = false
                                         break
                                     end
@@ -290,7 +303,7 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
 
 
                         if valid then
-                            mj:log("setting game object type:", variant.gameObjectTypeIndex)
+                            --mj:log("setting game object type:", variant.gameObjectTypeIndex)
                             mobGameObjectTypeIndex = variant.gameObjectTypeIndex
                             break
                         end
@@ -298,7 +311,7 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
                 end
                 
 
-                mj:log("start point found")
+                --mj:log("start point found")
                 exitPosNormal = normalize(goalMidPoint + perpVec * spawnDistance + rng:randomVec() * spawnDistance * 0.75)
                 local exitSampleResult = doSample(mobType, exitPosNormal, allNearSapiens)
 
@@ -314,7 +327,7 @@ function serverMobGroup:addRandomMobGroup(tribeID, averagePositionOfTribeSapiens
                 end
 
                 if exitSampleResult.success then
-                    mj:log("exit point found")
+                    --mj:log("exit point found")
                 
                     local groupCenter = startPosNormal
                     local groupID = serverGOM:reserveUniqueID() --technically we should use some other id here, but this seems a harmless easy hack

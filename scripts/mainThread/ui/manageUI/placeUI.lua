@@ -196,7 +196,7 @@ function placeUI:update()
         local gameObjectType = gameObject.types[gameObjectTypeKey]
         --mj:log(gameObjectType)
 
-        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResources(constructableType, nil)
+        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResourcesIncludingVariations(constructableType, nil)
         local newUnlocked =  hasSeenRequiredResources
 
         gridData[i] = {

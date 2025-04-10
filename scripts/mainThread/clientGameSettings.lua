@@ -6,6 +6,7 @@ local defaults = {
     joinWorldIP = "127.0.0.1",
     joinWorldPort = "16161",
     allowLanConnections = false,
+    chatNotifications = "enabled", -- enabled, disabled or messagesOnly
 
     pauseOnLostFocus = false, -- when app loses focus, whether to pause the game.
     inactivityPauseDelay = 10, --after this many minutes without text/mouse/controller input, the game will auto pause. >= 31 minutes is treated as disabled.

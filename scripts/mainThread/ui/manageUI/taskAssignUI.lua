@@ -928,8 +928,8 @@ function taskAssignUI:show(skillTypeIndex_, prevSelectedPriority, prevSelectedSc
                         iconInfo.cancelIcon = cancelIcon
                         cancelIcon.masksEvents = false
                         cancelIcon:setModel(model:modelIndexForName("icon_cancel_thic"))
-                        cancelIcon.scale3D = icon.scale3D
-                        cancelIcon.size = icon.size
+                        cancelIcon.scale3D = icon.scale3D * 1.5
+                        cancelIcon.size = icon.size * 1.5
                         cancelIcon.baseOffset = vec3(0,0,2)
                     end
                 end

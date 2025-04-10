@@ -28,7 +28,7 @@ clientStorageArea.serverUpdate = function(object, pos, rotation, scale, incoming
     --object.pos = pos
     --object.rotation = rotation
     --clientGOM:updateMatrix(object.uniqueID, pos, rotation)
-    if incomingServerStateDelta and incomingServerStateDelta.inventory then
+    if incomingServerStateDelta and (incomingServerStateDelta.inventory or incomingServerStateDelta.settingsByTribe) then
         clientStorageArea:updateStorageAreaSubModels(object)
     end
 end
@@ -168,6 +168,7 @@ function clientStorageArea:getStorageStatusKey(object)
             return "removeAll"
         end
     end
+
     local globalSettingsIDToUse = settingsTribeIDToUse
     if settingsTribeIDToUse == logic.tribeID then
         globalSettingsIDToUse = object.sharedState.tribeID
@@ -212,6 +213,8 @@ function clientStorageArea:getStorageStatusKey(object)
 end
 
 function clientStorageArea:updateStorageAreaSubModels(object)
+
+    mj:objectLog(object.uniqueID, "updateStorageAreaSubModels")
     
     local sharedState = object.sharedState
     local inventory = sharedState and sharedState.inventory

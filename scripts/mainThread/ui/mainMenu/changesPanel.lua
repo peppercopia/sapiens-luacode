@@ -14,17 +14,17 @@ local subMenuCommon = mjrequire "mainThread/ui/mainMenu/subMenuCommon"
 local alertPanel = mjrequire "mainThread/ui/alertPanel"
 
 local changesPanel = {
-    displayReleaseNotesVersionIdentifier = "0.5.2", -- will display release notes on launch if haven't yet for this unique string. Does not need to match actual version string, and this string should not be displayed anywhere
-    displayReleaseNotesMinorVersionIdentifier = "0.5.2.2",
+    displayReleaseNotesVersionIdentifier = "0.6.0", -- will display release notes on launch if haven't yet for this unique string. Does not need to match actual version string, and this string should not be displayed anywhere
+    displayReleaseNotesMinorVersionIdentifier = "0.6.0",
 
-    releaseNotesMajorVersionHumanReadable = "0.5.2",
-    releaseNotesMinorVersionHumanReadable = "0.5.2.2",
+    releaseNotesMajorVersionHumanReadable = "0.6",
+    releaseNotesMinorVersionHumanReadable = "0.6.0",
 
     shouldDisplayMinorNotesOnStartup = true
 }
 
 -- NOTE don't forget to change releaseNotesMajorVersionHumanReadable
-local titleString = "Fish - Update 0.5.2"
+local titleString = "Fish - Update 0.6"
 
 local changesText = [[This update adds seven different breeds of fish! It also brings new detailed textures and shaders, improves all animal models and behaviors, adds a range of colors for alpacas and woolskins, and contains a number of bug fixes and balancing tweaks.
 
@@ -34,9 +34,9 @@ In other news, Majic Jungle has an employee now, it's finally not just me! Paddy
 
 And this is just a start, there is a lot of new content in the pipeline.
 
-New in 0.5.2:
+New in 0.6:
 - Adds fish
-- Replaces Alpaca, chicken, mammoth models and animations
+- Improves Alpaca, chicken, mammoth models and animations
 - New detailed textures and shaders for all objects
 - New lighting model improving consistency, especially when moving between indoors and outdoors
 - Adds a variety of alpaca wool colors
@@ -45,6 +45,7 @@ New in 0.5.2:
 - Fixes for multiplayer, making it easier and more reliable to invite and connect to Steam friends
 - The role assignment UI now shows sapien age and distance, and allows sorting
 - Adds option to invert mouse movement horizontally
+- Adds option to disable chat notifications in multiplayer
 - Removes the need to research every type of cooked food individually
 - Gather, store, and transfer plans can now all be completed in the dark
 - Canoes now correctly require wood working and not wood building
@@ -57,15 +58,19 @@ New in 0.5.2:
 -- NOTE don't forget to change releaseNotesMinorVersionHumanReadable
 --local minorVersionChangesText = nil --set to nil to disable minor notes
 local minorVersionChangesText = [[
-0.5.2.2 makes it easier to sort through your sapiens when assigning roles, improves multiplayer connectivity, and contains a number of graphical improvements and minor bug fixes.
+0.6.0 fixes a few last bugs, and all going well this will be the final build before the public relase of 0.6.
 
-New in 0.5.2.2:
-- The role assignment UI now shows sapien age and distance, and allows sorting
-- New lighting model improving consistency, especially when moving between indoors and outdoors
-- Fixes for multiplayer, making it easier and more reliable to invite and connect to Steam friends
-- Fixes multiselect issues with trees
-- Fixes issues with edge texture rendering
-- Further improvements to a number of models and textures, and UI design
+Thank you to everyone who has been playing on the beta branch, submitting bugs and providing feedback!
+
+New in 0.6.0:
+- Adds option to disable chat notifications in multiplayer
+- Adds cancel button when hovering over roles in the main sapien list panel
+- Fixes issue where carcasses would go missing when hunting
+- Fixes issue where changing settings on storage areas didn't immediately change the colors of the pegs/status markers
+- Increases spawn rates of fish and mobs in coastal areas where they were too rare before
+- Fixes issue where you couldn't build woolskin beds unless you had discovered hay
+- Improvements to textures for urns, bowls, coconut logs, fur clothing, and more
+- Fixes missing icons
 ]]
 
 --[[Example:

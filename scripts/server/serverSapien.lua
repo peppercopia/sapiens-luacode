@@ -2459,13 +2459,13 @@ local function longWaitInfrequentUpdate(sapien, dt)
             local currentTribePopulation = math.max((serverTribe:getPopulation(sharedState.tribeID) or 0), 0)
 
             local foodCount = serverStorageArea.foodCountsByTribeID[sharedState.tribeID]
-            mj:log("foodCount:", foodCount)
+            --mj:log("foodCount:", foodCount)
             if (not foodCount) or foodCount < 5 then
                 return nil
             end
 
             local foodCountFraction = clamp(foodCount / (currentTribePopulation + 1), 0.0, 1.0)
-            mj:log("foodCountFraction:", foodCountFraction)
+            --mj:log("foodCountFraction:", foodCountFraction)
             
             if not sharedState.pregnancyOrBabyTimer then
                 sharedState:set("pregnancyOrBabyTimer", 0.0)
@@ -3743,7 +3743,7 @@ function serverSapien:createChildFromMother(motherSapien)
     local childSapienInfoStates = createSapienStates(motherSharedState.tribeID, childSapienID, randomSeed, sapienConstants.lifeStages.child.index, extraState, initialRoles)
     
     local offsetDirection = mat3GetRow(motherSapien.rotation, 2)
-    mj:log("serverSapien:createChildFromMother offsetDirection:", offsetDirection)
+   -- mj:log("serverSapien:createChildFromMother offsetDirection:", offsetDirection)
     local spawnPoint = motherSapien.pos + offsetDirection * mj:mToP(1.0)
     local shiftedPos = terrain:getHighestDetailTerrainPointAtPoint(spawnPoint)
 

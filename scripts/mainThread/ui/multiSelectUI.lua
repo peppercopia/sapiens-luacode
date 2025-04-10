@@ -290,7 +290,7 @@ local function getObjectTypes()
 
     local function addTypesForGroup(selectionGroupTypeIndex)
         local additionalObjectTypes = selectionGroup:getGroupObjectTypesForSelectionGroupIndex(selectionGroupTypeIndex)
-        mj:debug("additionalObjectTypes:", additionalObjectTypes, " type:", selectionGroup.types[selectionGroupTypeIndex])
+        --mj:debug("additionalObjectTypes:", additionalObjectTypes, " type:", selectionGroup.types[selectionGroupTypeIndex])
         for i,objectTypeIndex in ipairs(additionalObjectTypes) do
             if objectTypeIndex ~= currentObject.objectTypeIndex then
                 table.insert(objectTypes, objectTypeIndex)
@@ -309,7 +309,7 @@ local function getObjectTypes()
         end
     end
 
-    mj:log("selectionGroupObjectTypeArrayIndex:", selectionGroupObjectTypeArrayIndex, " objectTypes:", objectTypes, " gameObject.types[currentObject.objectTypeIndex]:", gameObject.types[currentObject.objectTypeIndex])
+    --mj:log("selectionGroupObjectTypeArrayIndex:", selectionGroupObjectTypeArrayIndex, " objectTypes:", objectTypes, " gameObject.types[currentObject.objectTypeIndex]:", gameObject.types[currentObject.objectTypeIndex])
 
     return objectTypes
 end

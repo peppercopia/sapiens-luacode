@@ -103,8 +103,8 @@ local windStrengthsBase = { -- vec2(main object triangles, decals)
 	bananaHangingFruit = vec2(getStrength(0.9,appleHeight), 0.8),
 	bananaTree = vec2(getStrength(0.9,appleHeight), 0.8),
 	bananaTreeSapling = vec2(0.9, 0.8),
-	flaxPlant = vec2(0.95,0.6),
-	flaxPlantSapling = vec2(0.4,0.6),
+	flaxPlant = vec2(0.9,0.95),
+	flaxPlantSapling = vec2(0.9,0.9),
 	bamboo1 = vec2(getStrength(0.95,birchHeight), 0.9),
 	bamboo2 = vec2(getStrength(0.95,birchHeight), 0.9),
 	bambooSapling = vec2(0.99, 0.8),
@@ -1577,7 +1577,7 @@ local remapModels = {
 		aspenLogHalf = {},
 	},
 	
-	pineLog = {
+	--[[pineLog = {
 		coconutLog = {
 			wood = "coconutWood",
 			trunk = "coconutBark",
@@ -1606,7 +1606,7 @@ local remapModels = {
 			wood = "coconutWood",
 			trunk = "coconutBark",
 		},
-	},
+	},]]
 	
 
 	willowLog = {
@@ -1720,7 +1720,7 @@ local remapModels = {
 		aspenSplitLog05AngleCut = {},
 	},
 	
-	pineSplitLog = {
+	--[[pineSplitLog = {
 		coconutSplitLog = {
 			wood = "coconutWood",
 			trunk = "coconutBark",
@@ -1870,6 +1870,7 @@ local remapModels = {
 			trunk = "coconutBark",
 		},
 	},
+	]]
 	
 
 	willowSplitLog = {

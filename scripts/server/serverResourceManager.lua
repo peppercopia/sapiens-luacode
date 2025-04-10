@@ -1268,24 +1268,27 @@ function serverResourceManager:getResourceObjectCounts(tribeID)
                 for objectID,resourceState in pairs(resourcesByObjectID) do
                     if resourceState.providerType == serverResourceManager.providerTypes.storageArea and resourceState.count > 0 then
                         local thisObjectTypeInfo = infosByObjectTypeIndex[objectTypeIndex]
-                        if not thisObjectTypeInfo then
-                            thisObjectTypeInfo = {
-                                count = 0,
-                                storageAreas = {}
-                            }
-                            infosByObjectTypeIndex[objectTypeIndex] = thisObjectTypeInfo
-                        end
+                        if not (thisObjectTypeInfo and thisObjectTypeInfo.storageAreas[objectID]) then
+                            if not thisObjectTypeInfo then
+                                thisObjectTypeInfo = {
+                                    count = 0,
+                                    storageAreas = {}
+                                }
+                                infosByObjectTypeIndex[objectTypeIndex] = thisObjectTypeInfo
+                            end
 
-                        thisObjectTypeInfo.count = thisObjectTypeInfo.count + resourceState.count
-                        thisObjectTypeInfo.storageAreas[objectID] = {
-                            count = resourceState.count,
-                            pos = resourceState.object.pos
-                        }
+                            thisObjectTypeInfo.count = thisObjectTypeInfo.count + resourceState.count
+                            thisObjectTypeInfo.storageAreas[objectID] = {
+                                count = resourceState.count,
+                                pos = resourceState.object.pos
+                            }
+                        end
                     end
                 end
             end
         end
     end
+    --mj:log("infosByObjectTypeIndex:", infosByObjectTypeIndex)
     return infosByObjectTypeIndex
 end
 

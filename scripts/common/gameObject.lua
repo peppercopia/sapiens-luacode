@@ -6024,7 +6024,7 @@ function gameObject:mjInit()
 	constructable:finalize()
 
 	-- NOTE: No game object types to be added after this point
-	mj:log("No game object types to be added after this point")
+	--mj:log("No game object types to be added after this point")
 
 	gameObject.validTypes = typeMaps:createValidTypesArray("gameObject", gameObject.types)
 

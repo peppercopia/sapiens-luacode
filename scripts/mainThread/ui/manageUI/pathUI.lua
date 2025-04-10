@@ -235,7 +235,7 @@ function pathUI:update()
         local gameObjectTypeKey = constructableType.inProgressGameObjectTypeKey
         local gameObjectType = gameObject.types[gameObjectTypeKey]
 
-        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResources(constructableType, nil)
+        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResourcesIncludingVariations(constructableType, nil)
         local hasSeenRequiredTools = constructableUIHelper:checkHasSeenRequiredTools(constructableType, nil)
         local discoveryComplete = constructableUIHelper:checkHasRequiredDiscoveries(constructableType)
 

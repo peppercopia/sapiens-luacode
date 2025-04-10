@@ -2540,7 +2540,7 @@ function localPlayer:setBridge(bridge_, clientState)
     local function applyMouseZoomWheelSensitivity(baseValue)
         local rampedValue = math.pow((baseValue + 0.5), 4.0)
         mouseWheelZoomSensitivitySetting = rampedValue
-        mj:log("applyMouseZoomWheelSensitivity baseValue:", baseValue, " rampedValue:", rampedValue, " mouseWheelZoomSensitivitySetting:", mouseWheelZoomSensitivitySetting)
+        --mj:log("applyMouseZoomWheelSensitivity baseValue:", baseValue, " rampedValue:", rampedValue, " mouseWheelZoomSensitivitySetting:", mouseWheelZoomSensitivitySetting)
     end
     
     local function applyControllerLookSensitivity(baseValue)

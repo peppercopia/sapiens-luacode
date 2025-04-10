@@ -72,6 +72,26 @@ function constructableUIHelper:checkHasSeenRequiredResources(constructableType, 
     return hasSeenRequiredResources
 end
 
+function constructableUIHelper:checkHasSeenRequiredResourcesIncludingVariations(constructableType, missingResourceGroups)
+    local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResources(constructableType, missingResourceGroups)
+    if not hasSeenRequiredResources then
+        local variations = constructable.variations[constructableType.index]
+        --mj:log("variations:", variations)
+        if variations then
+            for j, variationConstructableTypeIndex in ipairs(variations) do
+                if variationConstructableTypeIndex ~= constructableType.index then
+                    hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResources(constructable.types[variationConstructableTypeIndex], nil)
+                    if hasSeenRequiredResources then
+                        missingResourceGroups = nil
+                        return true
+                    end
+                end
+            end
+        end
+    end
+    return hasSeenRequiredResources
+end
+
 function constructableUIHelper:checkHasSeenRequiredTools(constructableType, missingTools)
     local hasSeenAllRequired = true
     local requiredTools = constructableType.requiredTools

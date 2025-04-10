@@ -236,7 +236,7 @@ local function updateButtons()
         end
         local gameObjectType = gameObject.types[gameObjectTypeKeyOrIndex]
 
-        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResources(constructableType, nil)
+        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResourcesIncludingVariations(constructableType, nil)
         local hasSeenRequiredTools = constructableUIHelper:checkHasSeenRequiredTools(constructableType, nil)
         local discoveryComplete = constructableUIHelper:checkHasRequiredDiscoveries(constructableType)
 

@@ -284,7 +284,7 @@ function modelComposite:generate(object)
 end
 
 function modelComposite:addVariantRemap(clothingObjectTypeIndex, materialRemap)
-    mj:log("modelComposite:addVariantRemap:", materialRemap)
+    --mj:log("modelComposite:addVariantRemap:", materialRemap)
     modelComposite.remapsByObjectTypeIndex[clothingObjectTypeIndex] = materialRemap
 end
 

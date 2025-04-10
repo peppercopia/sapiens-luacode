@@ -757,7 +757,7 @@ local function updateVisuals(wheelSegment, buttonTable)
             else
                 for i,vertInfo in ipairs(actionUI.selectedVertInfos) do
                     local planObjectInfo = vertInfo.planObjectInfo
-                    if planObjectInfo then
+                    if planObjectInfo and planObjectInfo.sharedState then
                         local planStates = planObjectInfo.sharedState.planStates
                         planStateForText = getMatchingCantCompletePlanState(planStates)
                         if planStateForText then

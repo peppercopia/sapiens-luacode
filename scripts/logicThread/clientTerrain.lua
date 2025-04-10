@@ -33,6 +33,9 @@ local function retrieveVertInfoForVert(vert)
 
     if sharedState and sharedState.modificationObjectID then
         vertInfo.planObjectInfo = clientGOM:retrieveObjectInfo(sharedState.modificationObjectID, false)
+        if not vertInfo.planObjectInfo.found then
+            vertInfo.planObjectInfo = nil
+        end
     end
 
     return vertInfo

@@ -840,7 +840,7 @@ local function convertToDeadObject(object, tribeID, mobType)
     end
                         
     serverGOM:setDynamicPhysics(object.uniqueID, true)
-    serverGOM:applyImpulse(object.uniqueID, object.normalizedPos * mj:pToM(1.0))
+    serverGOM:applyImpulse(object.uniqueID, object.normalizedPos * mj:mToP(1.0))
      --serverGOM:sendSnapObjectMatrix(object.uniqueID)
 end
 

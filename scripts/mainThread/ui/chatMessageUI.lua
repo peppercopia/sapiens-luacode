@@ -12,6 +12,7 @@ local locale = mjrequire "common/locale"
 local uiCommon = mjrequire "mainThread/ui/uiCommon/uiCommon"
 local uiTextEntry = mjrequire "mainThread/ui/uiCommon/uiTextEntry"
 local audio = mjrequire "mainThread/audio"
+local clientGameSettings = mjrequire "mainThread/clientGameSettings"
 
 local chatMessageUI = {}
 
@@ -227,9 +228,11 @@ function chatMessageUI:displayMessage(messageInfo, isStateChangeMessage)
     end
 
     messageView.size = vec2(messageView.size.x, textView.size.y + 8)
-
-    chatMessageUI:show()
-    audio:playUISound("audio/sounds/chat.wav", 0.5)
+    
+    if clientGameSettings.values.chatNotifications == "enabled" or (isStateChangeMessage and clientGameSettings.values.chatNotifications == "messagesOnly") then
+        chatMessageUI:show()
+        audio:playUISound("audio/sounds/chat.wav", 0.5)
+    end
 end
 
 function chatMessageUI:displayClientStateChange(messageInfo)

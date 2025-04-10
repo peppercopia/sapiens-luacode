@@ -435,7 +435,7 @@ function plantUI:update()
         local gameObjectTypeIndex = constructable:getDisplayGameObjectType(constructableTypeIndex, nil, nil)--constructableType.inProgressGameObjectTypeKey
         local gameObjectType = gameObject.types[gameObjectTypeIndex]
 
-        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResources(constructableType, nil)
+        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResourcesIncludingVariations(constructableType, nil)
         local hasSeenRequiredTools = constructableUIHelper:checkHasSeenRequiredTools(constructableType, nil)
         local discoveryComplete = constructableUIHelper:checkHasRequiredDiscoveries(constructableType)
 

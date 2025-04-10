@@ -624,6 +624,40 @@ function tribeUI:show()
 
                 
             
+
+                local iconInfo = iconBackgroundView.userData
+                if not iconInfo then
+                    iconInfo = {}
+                    iconBackgroundView.userData = iconInfo
+                end
+
+                iconBackgroundView.click = function()
+                    playerSapiens:setSkillPriority(sapien.uniqueID, otherSkillType.index, 0)
+                    --taskAssignUI:show(skillTypeIndex) --todo update list
+                    tribeUI:show() --horrifically brute force, could simply update this row
+                end
+                
+                
+                iconBackgroundView.hoverStart = function ()
+                    if not iconInfo.cancelIcon then
+                        local cancelIcon = ModelView.new(iconBackgroundView)
+                        iconInfo.cancelIcon = cancelIcon
+                        cancelIcon.masksEvents = false
+                        cancelIcon:setModel(model:modelIndexForName("icon_cancel_thic"))
+                        cancelIcon.scale3D = icon.scale3D * 1.5
+                        cancelIcon.size = icon.size * 1.5
+                        cancelIcon.baseOffset = vec3(0,0,2)
+                    end
+                end
+        
+                iconBackgroundView.hoverEnd = function ()
+                    if iconInfo.cancelIcon then
+                        iconBackgroundView:removeSubview(iconInfo.cancelIcon)
+                        iconInfo.cancelIcon = nil
+                    end
+                end
+
+                
                 local nameText = otherSkillType.name
                 if limitedAbility then
                     local limitedAbilityText = skill:getLimitedAbilityReason(sapien.sharedState, limitedAbilityIsPartial)

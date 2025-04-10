@@ -786,6 +786,71 @@ local function init(manageUIOrNIl, optionsParentView)
     end)
 
 
+    local chatNotificationOptions = {
+        {
+            key = "enabled",
+            title = locale:get("misc_enabled"),
+        },
+        {
+            key = "messagesOnly",
+            title = locale:get("settings_chatNotifications_messagesOnly"),
+        },
+        {
+            key = "disabled",
+            title = locale:get("misc_disabled"),
+        },
+    }
+
+    local chatNotificationSettingsList = {}
+    for index,option in ipairs(chatNotificationOptions) do
+        table.insert(chatNotificationSettingsList, option.title)
+    end
+    
+    local chatNotificationsPopupButton = addPopUpButton(generalView, generalViewPopOversView, locale:get("settings_chatNotifications") .. ":", chatNotificationSettingsList, function(selectedIndex, selectedTitle)
+        clientGameSettings:changeSetting("chatNotifications", chatNotificationOptions[selectedIndex].key)
+    end)
+
+    local currentChatNotificationSettingKey = clientGameSettings.values.chatNotifications
+    local currentChatNotificationsSelectedIndex = 1
+
+    if currentChatNotificationSettingKey then
+        for index,option in ipairs(chatNotificationOptions) do
+            if option.key == currentChatNotificationSettingKey then
+                currentChatNotificationsSelectedIndex = index
+            end
+        end
+    end
+
+    uiPopUpButton:setSelection(chatNotificationsPopupButton, currentChatNotificationsSelectedIndex)
+
+    --[[local languagesList = {}
+    local englishIndex = nil
+    local currentSelectedIndex = nil
+    local currentLanguageSettingKey = controller:getLocaleSettingKey()
+    for i,info in ipairs(orderedInfoList) do
+        table.insert(languagesList, info.displayName)
+        if info.key == currentLanguageSettingKey then
+            currentSelectedIndex = i
+        end
+        
+        if info.key == "en_us" then
+            englishIndex = i
+        end
+    end
+
+    if not currentSelectedIndex then
+        currentSelectedIndex = englishIndex or 1
+    end
+
+    mj:log("languagesList:", languagesList)
+
+    languagePopupButton = addPopUpButton(generalView, generalViewPopOversView, locale:get("settings_language") .. ":", languagesList, function(selectedIndex, selectedTitle)
+        controller:setLocale(orderedInfoList[selectedIndex].key)
+        languageApplyButton.hidden = false
+    end)
+    uiPopUpButton:setSelection(languagePopupButton, currentSelectedIndex)]]
+
+
     inviteFriendsButton = uiStandardButton:create(generalView, vec2(buttonSize.x, buttonSize.y))
     inviteFriendsButton.relativePosition = ViewPosition(MJPositionOuterRight, MJPositionCenter)
     inviteFriendsButton.relativeView = allowLanConnectionsToggleButton

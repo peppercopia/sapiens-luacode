@@ -29,7 +29,7 @@ local uiTextEntry = mjrequire "mainThread/ui/uiCommon/uiTextEntry"
 local uiSelectionLayout = mjrequire "mainThread/ui/uiCommon/uiSelectionLayout"
 
 local modalPanelSize = vec2(1140, 640)
-local modalPanelTitleIconHalfSize = 14
+local modalPanelTitleIconHalfSize = 20
 local modalPanelTitleIconPadding = 6
 
 local currentModalPanelUIObject = nil

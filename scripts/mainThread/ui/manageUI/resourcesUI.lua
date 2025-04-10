@@ -461,7 +461,7 @@ local function updateUseList(objectRowInfo)
     for i_,constructableType in ipairs(orderedConstructables) do
         local titleString = constructableType.plural
         
-        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResources(constructableType, nil)
+        local hasSeenRequiredResources = constructableUIHelper:checkHasSeenRequiredResourcesIncludingVariations(constructableType, nil)
         local hasSeenRequiredTools = constructableUIHelper:checkHasSeenRequiredTools(constructableType, nil)
         local discoveryComplete = constructableUIHelper:checkHasRequiredDiscoveries(constructableType)
 

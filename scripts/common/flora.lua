@@ -301,8 +301,6 @@ local function addPlantableObjects(baseObject, saplingBaseKey, floraInfo)--seedR
 		},
 	})
 
-	mj:log("added flora game object types")
-
 	local inProgressModelName = saplingModelName
 	if floraInfo.useCraftSimple then
 		inProgressModelName = "craftSimple"
