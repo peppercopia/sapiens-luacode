@@ -1,0 +1,121 @@
+"In Game Actions"
+{
+	"actions"
+	{
+		"InGameControls"
+		{
+			"title"					"#Set_Ingame"
+			"StickPadGyro"
+			{
+				"move"
+				{
+					"title"			"#Action_Move"
+					"input_mode"	"joystick_move"
+				}
+				"look"
+				{
+					"title"			"#Action_Camera"
+					"input_mode"	"absolute_mouse"
+				}
+			}
+			"AnalogTrigger"
+			{
+				"zoomIn"			"#Action_zoomIn"
+				"zoomOut"				"#Action_zoomOut"
+			}
+			"Button"
+			{
+				"confirm"		"#Action_confirm"
+				"cancel"		"#Action_cancel"
+				"buildMenu"		"#Action_buildMenu"
+				"other"			"#Action_other"
+				
+				"menuUp"		"#Menu_Up"
+				"menuDown"		"#Menu_Down"
+				"menuLeft"		"#Menu_Left"
+				"menuRight"	    "#Menu_Right"
+				
+				"pauseMenu"		"#Action_pauseMenu"
+				"speedDown"		"#Action_speedDown"
+				"speedUp"		"#Action_speedUp"
+				
+			}
+		}
+		"MenuControls"
+		{
+			"title"		"#Set_Menu"
+			"StickPadGyro"
+			{
+				"radialMenuDirection"
+				{
+					"title"			"#Menu_Radial"
+					"input_mode"	"joystick_move"
+				}
+			}
+			"AnalogTrigger"
+			{
+			}
+			"Button"
+			{
+				"menuUp"		"#Menu_Up"
+				"menuDown"		"#Menu_Down"
+				"menuLeft"		"#Menu_Left"
+				"menuRight"	    "#Menu_Right"
+
+				"menuTabLeft"		"#Menu_TabLeft"
+				"menuTabRight"	    "#Menu_TabRight"
+
+				"menuSelect"	"#Menu_Select"
+				"menuCancel"	"#Menu_Cancel"
+				"menuSpecial"	"#Menu_Special"
+				"menuOther"	    "#Menu_Other"
+
+				"menuStart"	    "#Menu_Start"
+				"menuRightBumper"		"#Menu_RightBumper"
+				"menuLeftBumper"	    "#Menu_LeftBumper"
+			}
+		}
+	}
+	"localization"
+	{
+		"english"
+		{
+			"Set_Ingame"			"In-Game Controls"
+			"Set_Menu"				"Menu Controls"
+
+			"Action_Move"			"Movement"
+			"Action_Camera"			"Camera"
+			"Action_zoomIn"			"Zoom In"
+			"Action_zoomOut"		"Zoom Out"
+
+			"Action_confirm"		"Confirm/Select"
+			"Action_cancel"			"Cancel"
+			"Action_buildMenu"		"Build Menu"
+			"Action_other"			"Other"
+
+			"Action_pauseMenu"		"Pause Menu"
+			"Action_speedUp"		"Speed Up"
+			"Action_speedDown"		"Speed Down"
+
+			"Menu_Radial"			"Radial Menu Direction"
+
+			"Menu_Up"				"Up"
+			"Menu_Down"				"Down"
+			"Menu_Left"				"Left"
+			"Menu_Right"			"Right"
+
+			"Menu_TabLeft"			"Tab Left"
+			"Menu_TabRight"			"Tab Right"
+
+			"Menu_Select"			"Select"
+			"Menu_Cancel"			"Cancel"
+			"Menu_Special"			"Special"
+			"Menu_Other"			"Other"
+			
+			"Menu_Start"			"Start/Pause"
+			"Menu_RightBumper"		"Right Bumper"
+			"Menu_LeftBumper"		"Left Bumper"
+			
+		}
+	}
+}

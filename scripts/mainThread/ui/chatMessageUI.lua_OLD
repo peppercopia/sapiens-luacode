@@ -1,0 +1,134 @@
+local mjm = mjrequire "common/mjm"
+local vec3 = mjm.vec3
+local vec2 = mjm.vec2
+local vec4 = mjm.vec4
+
+local uiCommon = mjrequire "mainThread/ui/uiCommon/uiCommon"
+
+local chatMessageUI = {}
+
+local mainView = nil
+
+local messageViewInfos = {}
+
+local displayMessagesMaxCount = 5
+local fadeOutTimeAfterRecievingMessage = 10.0
+
+local chatTextEntryActive = false
+local fadeOutTimer = 0.0
+
+function chatMessageUI:load(gameUI)
+    mainView = View.new(gameUI.view)
+    mainView.relativePosition = ViewPosition(MJPositionInnerLeft, MJPositionTop)
+    mainView.size = gameUI.view.size
+    mainView.hidden = true
+    mainView.alpha = 0.0
+
+    mainView.update = function(dt)
+        fadeOutTimer = fadeOutTimer + dt
+        if chatTextEntryActive or fadeOutTimer < fadeOutTimeAfterRecievingMessage then
+            mainView.hidden = false
+            if mainView.alpha < 1.0 then 
+                mainView.alpha = mainView.alpha + dt * 4.0
+                if mainView.alpha > 1.0 then
+                    mainView.alpha = 1.0
+                end
+            end
+        else
+            if not mainView.hidden then
+                mainView.alpha = mainView.alpha - dt
+                if mainView.alpha <= 0.0 then
+                    mainView.alpha = 0.0
+                    mainView.hidden = true
+                end
+            end
+        end
+    end
+end
+
+function chatMessageUI:displayMessage(messageInfo)
+    fadeOutTimer = 0.0
+    mainView.hidden = false
+
+    local function attachToMainView(messageViewToAttach)
+        messageViewToAttach.relativeView = mainView
+        messageViewToAttach.relativePosition = ViewPosition(MJPositionInnerLeft, MJPositionTop)
+        messageViewToAttach.baseOffset = vec3(20, -20, 0)
+    end
+
+    local messageView = ColorView.new(mainView)
+    attachToMainView(messageView)
+
+    if #messageViewInfos > 0 then
+        messageView.relativeView = messageViewInfos[#messageViewInfos].view
+        messageViewInfos[#messageViewInfos].dependentView = messageView
+        messageView.relativePosition = ViewPosition(MJPositionInnerLeft, MJPositionBelow)
+        messageView.baseOffset = vec3(0, -2, 0)
+    end
+
+    messageView.size = vec2(400,60)
+    messageView.color = vec4(0.0,0.0,0.0,0.6)
+
+    local textView = TextView.new(messageView)
+    textView.font = Font(uiCommon.consoleFontName, 12)
+    textView.relativePosition = ViewPosition(MJPositionInnerLeft, MJPositionTop)
+    textView.wrapWidth = messageView.size.x - 8
+    textView.baseOffset = vec3(4,-4, 0)
+    textView.text = (messageInfo.clientName or "no name") .. ": "
+    
+
+    local color = vec4(1.0,1.0,0.5, 1.0)
+    textView:addColoredText(messageInfo.text, color)
+
+    --[[for i = 1, #messageInfo.text do
+        local c = messageInfo.text:sub(i,i)
+        local randomColor = rng:vecForUniqueID(32, i)
+        randomColor = randomColor * 0.5 + vec3(0.5,0.5,0.5);
+        textView:addColoredText(c, vec4(randomColor.x, randomColor.y, randomColor.z, 1.0))
+    end]]
+
+    local messageViewInfo = {
+        view = messageView,
+        index = #messageViewInfos + 1,
+        fadeOutTimer = 0.0,
+    }
+
+    table.insert(messageViewInfos, messageViewInfo)
+
+    if #messageViewInfos > displayMessagesMaxCount then
+        local messageViewInfoToRemove = messageViewInfos[#messageViewInfos - displayMessagesMaxCount]
+        messageViewInfoToRemove.view.update = function(dt)
+            messageViewInfoToRemove.fadeOutTimer = messageViewInfoToRemove.fadeOutTimer + dt
+            local dependentView = messageViewInfoToRemove.dependentView
+            if messageViewInfoToRemove.fadeOutTimer < 1.0 then
+                messageViewInfoToRemove.view.alpha = math.max(1.0 - messageViewInfoToRemove.fadeOutTimer * 2.0, 0.0);
+                if dependentView and messageViewInfoToRemove.fadeOutTimer > 0.5 then
+                    local offsetMix = (messageViewInfoToRemove.fadeOutTimer - 0.5) * 2.0
+                    dependentView.baseOffset = vec3(0, mjm.mix(-2, messageViewInfoToRemove.view.size.y, offsetMix), 0)
+                end
+            else
+                if dependentView then
+                    attachToMainView(dependentView)
+                end
+                mainView:removeSubview(messageViewInfoToRemove.view)
+                for i = messageViewInfoToRemove.index, #messageViewInfos - 1 do
+                    messageViewInfos[i] = messageViewInfos[i + 1]
+                    messageViewInfos[i].index = messageViewInfos[i].index - 1
+                end
+                table.remove(messageViewInfos, #messageViewInfos)
+            end
+        end
+    end
+
+    messageView.size = vec2(messageView.size.x, textView.size.y + 8)
+
+end
+
+function chatMessageUI:setChatTextEntryActive(newActive)
+    chatTextEntryActive = newActive
+    if newActive then
+        mainView.hidden = false
+    end
+end
+
+return chatMessageUI

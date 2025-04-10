@@ -1,0 +1,139 @@
+{
+   "action_sets" : [
+      {
+         "name" : "/actions/main",
+         "usage" : "leftright"
+      }
+   ],
+   "actions" : [
+      {
+         "name" : "/actions/main/in/buttonTeleport",
+         "requirement" : "optional",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/buttonTurnRight",
+         "requirement" : "optional",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/buttonTurnLeft",
+         "requirement" : "optional",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/trackpadAnalogLeft",
+         "requirement" : "optional",
+         "type" : "vector2"
+      },
+      {
+         "name" : "/actions/main/in/joystickAnalogLeft",
+         "requirement" : "optional",
+         "type" : "vector2"
+      },
+      {
+         "name" : "/actions/main/in/trackpadAnalogRight",
+         "requirement" : "optional",
+         "type" : "vector2"
+      },
+      {
+         "name" : "/actions/main/in/joystickAnalogRight",
+         "requirement" : "optional",
+         "type" : "vector2"
+      },
+      {
+         "name" : "/actions/main/in/trackpadTouchedRight",
+         "requirement" : "optional",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/trackpadTouchedLeft",
+         "requirement" : "optional",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/gripLeft",
+         "requirement" : "optional",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/gripRight",
+         "requirement" : "optional",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/trackpadOrJoystickButtonPressedRight",
+         "requirement" : "optional",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/trackpadOrJoystickButtonPressedLeft",
+         "requirement" : "optional",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/buttonBuild",
+         "requirement" : "suggested",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/buttonEscape",
+         "requirement" : "suggested",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/leftHandTip",
+         "requirement" : "suggested",
+         "type" : "pose"
+      },
+      {
+         "name" : "/actions/main/in/rightHandTip",
+         "requirement" : "suggested",
+         "type" : "pose"
+      },
+      {
+         "name" : "/actions/main/in/leftTrigger",
+         "requirement" : "suggested",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/main/in/rightTrigger",
+         "requirement" : "suggested",
+         "type" : "boolean"
+      }
+   ],
+   "default_bindings" : [
+      {
+         "binding_url" : "sapiens_binding_vive_controller.json",
+         "controller_type" : "vive_controller"
+      },
+      {
+         "binding_url" : "sapiens_binding_oculus_touch.json",
+         "controller_type" : "oculus_touch"
+      }
+   ],
+   "localization" : [
+      {
+         "/actions/main" : "Sapiens Actions",
+         "/actions/main/in/buttonTeleport" : "Teleport",
+         "/actions/main/in/buttonTurnRight" : "Turn Right",
+         "/actions/main/in/buttonTurnLeft" : "Turn Left",
+         "/actions/main/in/trackpadAnalogLeft" : "Left Trackpad",
+         "/actions/main/in/joystickAnalogLeft" : "Left Joystick",
+         "/actions/main/in/trackpadAnalogRight" : "Right Trackpad",
+         "/actions/main/in/joystickAnalogRight" : "Right Joystick",
+         "/actions/main/in/trackpadTouchedLeft" : "Left Trackpad Touched",
+         "/actions/main/in/trackpadTouchedRight" : "Right Trackpad Touched",
+         "/actions/main/in/trackpadOrJoystickButtonPressedRight" : "Right Joystick or Trackpad Clicked",
+         "/actions/main/in/trackpadOrJoystickButtonPressedLeft" : "Left Joystick or Trackpad Clicked",
+         "/actions/main/in/buttonBuild" : "Build Button",
+         "/actions/main/in/buttonEscape" : "Escape/Close Button",
+         "/actions/main/in/leftHandTip" : "Left Hand",
+         "/actions/main/in/rightHandTip" : "Right Hand",
+         "/actions/main/in/leftTrigger" : "Left Trigger",
+         "/actions/main/in/rightTrigger" : "Right Trigger",
+         "/actions/main/in/teleport" : "Teleport",
+         "language_tag" : "en"
+      }
+   ]
+}

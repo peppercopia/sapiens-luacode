@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.vsh": "glsl",
+        "*.fsh": "glsl",
+        "algorithm": "cpp",
+        "memory": "cpp"
+    },
+}

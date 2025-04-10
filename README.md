@@ -1,2 +1,2 @@
-# sapiens-luacode
-Sapiens Lua code.
+# sapiens-codebase
+Lua Codebase and resources for Sapiens.

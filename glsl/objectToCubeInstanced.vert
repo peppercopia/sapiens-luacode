@@ -1,0 +1,110 @@
+
+#extension GL_EXT_multiview : enable
+
+layout(binding = 0) uniform UniformBufferObject {
+    mat4 mv_matrix[6];
+    mat4 p_matrix;
+    mat4 normal_matrix;
+    mat4 shadow_matrices[4];
+    mat4 waterDepthOrthoMatrix;
+    vec4 camPos;
+    vec4 sunPos;
+    vec4 origin;
+    vec4 translation;
+    vec4 extraData;
+} ubo;
+
+
+layout(location = 0) in vec3 pos;
+layout(location = 1) in vec2 uv;
+layout(location = 2) in vec4 normal;
+layout(location = 3) in vec4 tangent;
+layout(location = 4) in uvec4 material;
+layout(location = 5) in uvec4 materialB;
+
+layout (location = 6) in vec4 instancePosScale;
+layout (location = 7) in vec4 instanceRot;
+layout (location = 8) in vec4 instanceOffset;
+layout (location = 9) in vec4 instanceExtraData;
+
+layout(location = 0) out vec3 outPos;
+layout(location = 1) out vec4 outWorldPos;
+layout(location = 2) out vec3 outWorldCamPos;
+layout(location = 3) out vec3 outColor;
+layout(location = 4) out vec4 outMaterialUV;
+layout(location = 5) out vec3 outView;
+layout(location = 6) out vec3 outNormal;
+layout(location = 7) out vec3 outWorldViewVec;
+layout(location = 8) out vec4 outShadowCoords[4];
+layout(location = 12) out vec4 outInstanceExtraData;
+layout(location = 13) out vec3 outColorB;
+layout(location = 14) out vec2 outMaterialB;
+layout(location = 15) out vec3 outTangent;
+
+out gl_PerVertex {
+    vec4 gl_Position;
+};
+
+vec3 rotate_vector( vec4 quat, vec3 vec )
+{
+    return vec + 2.0 * cross( cross( vec, quat.xyz ) + quat.w * vec, quat.xyz );
+}
+
+void main(void)
+{
+
+    vec3 newPos = rotate_vector(instanceRot, pos * instancePosScale.w) + instancePosScale.xyz;
+    vec3 newNormal = rotate_vector(instanceRot, normal.xyz);
+    vec3 newTangent = rotate_vector(instanceRot, tangent.xyz);
+    
+    outInstanceExtraData = vec4(0.0,0.0,0.0,0.0);
+
+    vec4 V = ubo.mv_matrix[gl_ViewIndex] * vec4(newPos, 1.0);
+    gl_Position = ubo.p_matrix * V;
+
+    vec3 rotatedPosition = (ubo.normal_matrix * vec4(newPos, 1.0)).xyz;
+    
+    outColor = material.xyz / 255.0;
+    outColorB = materialB.xyz / 255.0;
+    //outColor = outColor * outColor;
+    //outColorB = outColorB * outColorB;
+    if(material.w > 127)
+    {
+      outMaterialUV.xy = vec2((material.w - 128.0) / 127.0, 1.0);
+    }
+    else
+    {
+      outMaterialUV.xy = vec2(material.w / 127.0, 0.0);
+    }
+    if(materialB.w > 127)
+    {
+      outMaterialB = vec2((materialB.w - 128.0) / 127.0, 1.0);
+    }
+    else
+    {
+      outMaterialB = vec2(materialB.w / 127.0, 0.0);
+    }
+    
+    outMaterialUV.zw = uv;
+    
+    outNormal = (ubo.normal_matrix * vec4(newNormal, 1.0)).xyz;
+    outTangent = (ubo.normal_matrix * vec4(newTangent, 1.0)).xyz;
+
+    outView = ubo.camPos.xyz - rotatedPosition;
+
+    float baseNDotL = dot( outNormal, ubo.sunPos.xyz );
+
+    outPos = rotatedPosition.xyz;
+    
+    outWorldPos.xyz = (rotatedPosition.xyz + ubo.origin.xyz) * 8.388608;
+    outWorldCamPos = (ubo.camPos.xyz + ubo.origin.xyz) * 8.388608;
+    outWorldViewVec = (outWorldPos.xyz - outWorldCamPos);
+    
+    vec4 waterDepth = ubo.waterDepthOrthoMatrix * vec4(rotatedPosition.xyz, 1.0);
+    outWorldPos.w = -waterDepth.z + ubo.origin.w;
+    
+    outShadowCoords[0] = ubo.shadow_matrices[0] * vec4(rotatedPosition, 1.0);
+    outShadowCoords[1] = ubo.shadow_matrices[1] * vec4(rotatedPosition, 1.0);
+    outShadowCoords[2] = ubo.shadow_matrices[2] * vec4(rotatedPosition, 1.0);
+    outShadowCoords[3] = ubo.shadow_matrices[3] * vec4(rotatedPosition, 1.0);
+}
